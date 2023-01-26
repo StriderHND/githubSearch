@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var searchQuery = ""
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView{
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.accentColor)
+                Text("Hello, world!")
+            }
         }
+        .navigationBarTitleDisplayMode(.automatic)
+        .searchable(text: $searchQuery, prompt: "Search repository")
         .padding()
     }
 }
