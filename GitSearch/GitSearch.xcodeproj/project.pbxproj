@@ -20,6 +20,7 @@
 		5690C8032988158F00AAA23A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C8022988158F00AAA23A /* Repository.swift */; };
 		5690C8072988220300AAA23A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C8062988220300AAA23A /* NetworkService.swift */; };
 		5690C8092988254900AAA23A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C8082988254900AAA23A /* NetworkClient.swift */; };
+		5690C80C298833D300AAA23A /* Date+StringFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C80B298833D300AAA23A /* Date+StringFormats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5690C8022988158F00AAA23A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		5690C8062988220300AAA23A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5690C8082988254900AAA23A /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		5690C80B298833D300AAA23A /* Date+StringFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StringFormats.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		5690C8002988157500AAA23A /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				5690C80A2988330700AAA23A /* DataType + Extensions */,
 				5690C80429881A6C00AAA23A /* Services */,
 				5690C8012988157C00AAA23A /* Models */,
 			);
@@ -209,6 +212,14 @@
 				5690C8082988254900AAA23A /* NetworkClient.swift */,
 			);
 			path = APIServices;
+			sourceTree = "<group>";
+		};
+		5690C80A2988330700AAA23A /* DataType + Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5690C80B298833D300AAA23A /* Date+StringFormats.swift */,
+			);
+			path = "DataType + Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				561CD90A298466DA000ED5E2 /* RepositoriesListViewModel.swift in Sources */,
 				5689AED62982CC54004DA030 /* GitSearchApp.swift in Sources */,
 				5690C8032988158F00AAA23A /* Repository.swift in Sources */,
+				5690C80C298833D300AAA23A /* Date+StringFormats.swift in Sources */,
 				5690C8072988220300AAA23A /* NetworkService.swift in Sources */,
 				5690C8092988254900AAA23A /* NetworkClient.swift in Sources */,
 			);

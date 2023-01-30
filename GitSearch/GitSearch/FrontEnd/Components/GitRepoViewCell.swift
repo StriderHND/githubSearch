@@ -11,21 +11,41 @@ struct GitRepoViewCell: View {
     
     @State var starsCount: Int
     @State var updatedAt: Date
-    @State var languate: String
+    @State var language: String
     @State var description: String
     @State var fullRepoName: String
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            RoundedRectangle(cornerRadius: 25)
+                .fill(.cyan)
+                .opacity(0.9)
+                .frame(height: 150)
+            
+            VStack(alignment: .leading, spacing: 5){
+                Text(fullRepoName)
+                    .font(.title)
+                    .bold()
+                Text(description)
+                Text(language)
+                    .font(.caption)
+                Text("Stars: \(starsCount.description)" )
+                    .font(.caption2)
+                Text("Updated: \(updatedAt.timeAgoDisplay())")
+                    .font(.caption2)
+            }.foregroundColor(.white)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
     }
 }
 
 struct GitRepoViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        GitRepoViewCell(starsCount: <#Int#>,
-                        updatedAt: <#Date#>,
-                        languate: <#String#>,
-                        description: <#String#>,
-                        fullRepoName: <#String#>)
+        GitRepoViewCell(starsCount: 10,
+                        updatedAt: Date(timeInterval: -60000, since: .now),
+                        language: "C++",
+                        description: "The Swift Programming Language.",
+                        fullRepoName: "apple/swift")
     }
 }
