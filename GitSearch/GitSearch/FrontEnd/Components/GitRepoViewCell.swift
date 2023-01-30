@@ -29,7 +29,9 @@ struct GitRepoViewCell: View {
                     .font(.caption2)
                 Text("Updated: \(repo.lastUpdate)")
                     .font(.caption2)
-            }.foregroundColor(.white)
+            }
+            .padding()
+            .foregroundColor(.white)
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
