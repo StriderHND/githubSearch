@@ -9,11 +9,7 @@ import SwiftUI
 
 struct GitRepoViewCell: View {
     
-    @State var starsCount: Int
-    @State var updatedAt: Date
-    @State var language: String
-    @State var description: String
-    @State var fullRepoName: String
+    var repo: Repository
     
     var body: some View {
         ZStack{
@@ -23,15 +19,15 @@ struct GitRepoViewCell: View {
                 .frame(height: 150)
             
             VStack(alignment: .leading, spacing: 5){
-                Text(fullRepoName)
+                Text(repo.fullName)
                     .font(.title)
                     .bold()
-                Text(description)
-                Text(language)
+                Text(repo.description)
+                Text(repo.language)
                     .font(.caption)
-                Text("Stars: \(starsCount.description)" )
+                Text("Stars: \(repo.starsCount.description)" )
                     .font(.caption2)
-                Text("Updated: \(updatedAt.timeAgoDisplay())")
+                Text("Updated: \(repo.updatedAt.timeAgoDisplay())")
                     .font(.caption2)
             }.foregroundColor(.white)
         }
@@ -42,10 +38,13 @@ struct GitRepoViewCell: View {
 
 struct GitRepoViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        GitRepoViewCell(starsCount: 10,
-                        updatedAt: Date(timeInterval: -60000, since: .now),
-                        language: "C++",
-                        description: "The Swift Programming Language.",
-                        fullRepoName: "apple/swift")
+        GitRepoViewCell(repo: Repository(
+            id: 345346,
+            updatedAt: Date(timeInterval: -60000, since: .now),
+            starsCount: 10,
+            fullName: "apple/swift",
+            language: "C++",
+            description: "The Swift Programming Language."
+        ))
     }
 }

@@ -9,11 +9,16 @@ import SwiftUI
 
 struct RepositoriesListView: View {
     
+    @StateObject var viewModel = RepositoriesListViewModel()
     @State var searchQuery = ""
     
     var body: some View {
-        List{
-            
+        List {
+            ForEach(viewModel.repos, id: \.id) { repo in
+                GitRepoViewCell(repo: repo)
+            }
+        }.task {
+            await viewModel.fetchRepos()
         }
     }
 }
