@@ -15,19 +15,39 @@ final class RepositoriesListViewModel: ObservableObject {
     @Published private(set) var errorMessage: String = ""
     @Published var hasError: Bool = false
     
-    var request: URLRequest = {
-        let urlString = "https://api.github.com/search/repositories?q=Q"
-        let url = URL(string: urlString)!
-        return URLRequest(url: url)
-    }()
     
-    func fetchRepos() async {
+    func fetchRepos(with param:String?) async {
+        
+        let request = buildRequest(with: param)
+        
         do{
             let response = try await client.putRequest(type: Repos.self, with: request)
             repos = response.items.compactMap{ $0 }
         } catch {
             errorMessage = "\((error as! ApiError).customDescription)"
             hasError = true
+        }
+    }
+    
+    func buildRequest(with param:String?) -> URLRequest {
+        var searchQuery:String = ""
+        
+        if let unwrappedParam = param {
+            if unwrappedParam.isEmpty{
+                searchQuery = "Q"
+            } else {
+                searchQuery = unwrappedParam
+            }
+        }
+       
+        let urlString = "https://api.github.com/search/repositories?q=\(searchQuery)"
+        let url = URL(string: urlString)!
+        return URLRequest(url: url)
+    }
+    
+    func runSearch(with param:String?) {
+        Task {
+            await self.fetchRepos(with: param)
         }
     }
 }
