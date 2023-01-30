@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct Repos: Decodable {
+    let items: [Repository]
+}
+
 struct Repository: Decodable {
     
     let id: Int

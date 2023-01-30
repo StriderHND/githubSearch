@@ -32,11 +32,11 @@ enum ApiError: Error {
 
 protocol NetworkService {
     var session: URLSession { get }
-    func putRequest<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T
+    func putRequest<T: Decodable>(type: T.Type, with request: URLRequest) async throws -> T
 }
 
 extension NetworkService {
-    func putRequest<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T {
+    func putRequest<T: Decodable>(type: T.Type, with request: URLRequest) async throws -> T {
         let (data, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else  {
             throw ApiError.requestFailed(description: "Invalid Response")
