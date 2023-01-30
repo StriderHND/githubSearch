@@ -10,7 +10,7 @@ import SwiftUI
 struct RepositoriesListView: View {
     
     @StateObject var viewModel = RepositoriesListViewModel()
-    @State var searchQuery = ""
+    @Binding var searchQuery: String
     
     var body: some View {
         List {
@@ -25,6 +25,6 @@ struct RepositoriesListView: View {
 
 struct RepositoriesListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RepositoriesListView(searchQuery: .constant(""))
     }
 }

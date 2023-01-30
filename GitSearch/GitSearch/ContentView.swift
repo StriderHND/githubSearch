@@ -13,16 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
-            }
+            RepositoriesListView(searchQuery: $searchQuery)
         }
         .navigationBarTitleDisplayMode(.automatic)
         .searchable(text: $searchQuery, prompt: "Search repository")
-        .padding()
     }
 }
 

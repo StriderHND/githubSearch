@@ -16,18 +16,18 @@ struct GitRepoViewCell: View {
             RoundedRectangle(cornerRadius: 25)
                 .fill(.cyan)
                 .opacity(0.9)
-                .frame(height: 150)
+                .frame(height: 250)
             
             VStack(alignment: .leading, spacing: 5){
                 Text(repo.fullName)
                     .font(.title)
                     .bold()
                 Text(repo.description)
-                Text(repo.language)
+                Text(repo.language ?? "N/A")
                     .font(.caption)
                 Text("Stars: \(repo.starsCount.description)" )
                     .font(.caption2)
-                Text("Updated: \(repo.updatedAt.timeAgoDisplay())")
+                Text("Updated: \(repo.lastUpdate)")
                     .font(.caption2)
             }.foregroundColor(.white)
         }
@@ -40,10 +40,10 @@ struct GitRepoViewCell_Previews: PreviewProvider {
     static var previews: some View {
         GitRepoViewCell(repo: Repository(
             id: 345346,
-            updatedAt: Date(timeInterval: -60000, since: .now),
             starsCount: 10,
             fullName: "apple/swift",
             language: "C++",
+            updatedAt: "2023-01-30T11:33:29Z",
             description: "The Swift Programming Language."
         ))
     }
