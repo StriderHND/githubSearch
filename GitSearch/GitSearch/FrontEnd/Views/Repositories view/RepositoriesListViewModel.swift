@@ -6,30 +6,29 @@
 //
 
 import Foundation
+import Combine
 
 @MainActor
 final class RepositoriesListViewModel: ObservableObject {
     
     private let client = NetworkClient()
+    @Published var serachParam: String = ""
     @Published private(set) var repos: [Repository] = []
     @Published private(set) var errorMessage: String = ""
     @Published var hasError: Bool = false
     
+    private var subscriptions: Set<AnyCancellable> = []
     
-    func fetchRepos(with param:String?) async {
-        
-        let request = buildRequest(with: param)
-        
-        do{
-            let response = try await client.putRequest(type: Repos.self, with: request)
-            repos = response.items.compactMap{ $0 }
-        } catch {
-            errorMessage = "\((error as! ApiError).customDescription)"
-            hasError = true
-        }
+    init() {
+        setupBidings()
     }
+}
+
+
+// MARK: - Private Methods
+extension RepositoriesListViewModel {
     
-    func buildRequest(with param:String?) -> URLRequest {
+    private func buildRequest(with param:String?) -> URLRequest {
         var searchQuery:String = ""
         
         if let unwrappedParam = param {
@@ -45,9 +44,25 @@ final class RepositoriesListViewModel: ObservableObject {
         return URLRequest(url: url)
     }
     
-    func runSearch(with param:String?) {
-        Task {
-            await self.fetchRepos(with: param)
+    private func repositoriesListPublisher(forParam param:String?) -> Future<[Repository], Error> {
+        Future {
+            let request = self.buildRequest(with: param)
+            let response = try await self.client.putRequest(type: Repos.self, with: request)
+            return response.items.compactMap{ $0 }
         }
+    }
+    
+    private func setupBidings() {
+        self.$serachParam.sink { value in
+            self.repositoriesListPublisher(forParam: value)
+                .receive(on: DispatchQueue.main)
+                .sink { error in
+                    print(error)
+                } receiveValue: { response in
+                    self.repos = response
+                }
+                .store(in: &self.subscriptions)
+        }
+        .store(in: &self.subscriptions)
     }
 }

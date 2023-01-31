@@ -17,11 +17,9 @@ struct RepositoriesListView: View {
             ForEach(viewModel.repos, id: \.id) { repo in
                 GitRepoViewCell(repo: repo)
             }
-        }.onAppear(perform: {
-            viewModel.runSearch(with: searchQuery)
-        })
+        }
         .onChange(of: searchQuery) { newSearch in
-            viewModel.runSearch(with: newSearch)
+            viewModel.serachParam = newSearch
         }
     }
 }
