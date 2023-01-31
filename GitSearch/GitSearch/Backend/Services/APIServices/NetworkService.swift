@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ApiError: Error {
+enum APIError: Error {
     case noInternet
     case invalidData
     case jsonParsingFailure
@@ -39,18 +39,30 @@ extension NetworkService {
     func putRequest<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T {
         let (data, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else  {
-            throw ApiError.requestFailed(description: "Invalid Response")
+            throw APIError.requestFailed(description: "Invalid Response")
         }
         
-        guard httpResponse.statusCode == 200 else {
-            throw ApiError.responseUnsuccessful(description: "Status Code: \(httpResponse.statusCode)")
+        if (httpResponse.statusCode == 401) {
+            throw APIError.responseUnsuccessful(description: "Unauthorized - Status Code: \(httpResponse.statusCode)");
         }
-        
+        if (httpResponse.statusCode == 403) {
+            throw APIError.responseUnsuccessful(description: "Resource forbidden - Status Code: \(httpResponse.statusCode)");
+        }
+        if (httpResponse.statusCode == 404) {
+            throw APIError.responseUnsuccessful(description: "Resource not found- Status Code: \(httpResponse.statusCode)");
+        }
+        if (405..<500 ~= httpResponse.statusCode) {
+            throw APIError.responseUnsuccessful(description: "Client error - Status Code: \(httpResponse.statusCode)");
+        }
+        if (500..<600 ~= httpResponse.statusCode) {
+            throw APIError.responseUnsuccessful(description: "Server error - Status Code: \(httpResponse.statusCode)");
+        }
+                
         do {
             let decoder = JSONDecoder()
             return try decoder.decode(type, from: data)
         } catch {
-            throw ApiError.jsonConversionFailure(description: error.localizedDescription)
+            throw APIError.jsonConversionFailure(description: error.localizedDescription)
         }
     }
 }
