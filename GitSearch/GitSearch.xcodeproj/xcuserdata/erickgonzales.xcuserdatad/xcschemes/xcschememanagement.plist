@@ -9,6 +9,44 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GitSearchiOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5689AED12982CC54004DA030</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5689AEE22982CC57004DA030</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5689AEEC2982CC57004DA030</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56EDCF7829896D9B00933D4F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56EDCF8729896D9E00933D4F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56EDCF9129896D9E00933D4F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

@@ -36,6 +36,10 @@ extension Repository {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.locale = Locale.current
-        return dateFormatter.date(from: updatedAt)!.timeAgoDisplay()
+        if let date =  dateFormatter.date(from: updatedAt) {
+            return date.timeAgoDisplay()
+        }
+        
+        return "N/A"
     }
 }

@@ -12,8 +12,9 @@ struct ContentView: View {
     @State var searchQuery = ""
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             RepositoriesListView(searchQuery: $searchQuery)
+                .navigationTitle("Repositories")
         }
         .navigationBarTitleDisplayMode(.automatic)
         .searchable(text: $searchQuery, prompt: "Search repository")
