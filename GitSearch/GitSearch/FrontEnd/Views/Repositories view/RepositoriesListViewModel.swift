@@ -53,9 +53,12 @@ extension RepositoriesListViewModel {
     }
     
     private func setupBidings() {
-        self.$serachParam.sink { value in
+        self.$serachParam
+            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
+            .sink { value in
             self.repositoriesListPublisher(forParam: value)
                 .receive(on: DispatchQueue.main)
+                .throttle(for: 10.0, scheduler: DispatchQueue.main, latest: true)
                 .sink { error in
                     print(error)
                 } receiveValue: { response in
