@@ -14,8 +14,12 @@ struct RepositoriesListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.repos, id: \.id) { repo in
-                GitRepoViewCell(repo: repo)
+            ForEach(viewModel.state.repos, id: \.id) { repo in
+                GitRepoViewCell(repo: repo).onAppear{
+                    if viewModel.state.repos.last == repo {
+                        viewModel.fetchNextPageIfPossible()
+                    }
+                }
             }
         }
         .onChange(of: searchQuery) { newSearch in

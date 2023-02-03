@@ -11,7 +11,7 @@ struct Repos: Codable {
     let items: [Repository]
 }
 
-struct Repository: Codable {
+struct Repository: Codable, Equatable {
     
     let id: Int
     let starsCount: Int
