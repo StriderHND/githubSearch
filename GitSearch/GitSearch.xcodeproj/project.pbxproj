@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56EDCFA329896E5000933D4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AED72982CC54004DA030 /* ContentView.swift */; };
+		56EDCFA329896E5000933D4F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AED72982CC54004DA030 /* HomeView.swift */; };
 		56EDCFA429896E5500933D4F /* GitSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AED52982CC54004DA030 /* GitSearchApp.swift */; };
 		56EDCFA529896E5800933D4F /* GitRepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C7FE2988136B00AAA23A /* GitRepoViewCell.swift */; };
 		56EDCFA629896E5B00933D4F /* RepositoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561CD909298466DA000ED5E2 /* RepositoriesListViewModel.swift */; };
@@ -40,7 +40,7 @@
 		561CD90529846691000ED5E2 /* RepositoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListView.swift; sourceTree = "<group>"; };
 		561CD909298466DA000ED5E2 /* RepositoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewModel.swift; sourceTree = "<group>"; };
 		5689AED52982CC54004DA030 /* GitSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSearchApp.swift; sourceTree = "<group>"; };
-		5689AED72982CC54004DA030 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5689AED72982CC54004DA030 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5689AED92982CC57004DA030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5689AEDC2982CC57004DA030 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5689AEDE2982CC57004DA030 /* GitSearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitSearch.entitlements; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		56EDCFAC2989742D00933D4F /* Home View */ = {
 			isa = PBXGroup;
 			children = (
-				5689AED72982CC54004DA030 /* ContentView.swift */,
+				5689AED72982CC54004DA030 /* HomeView.swift */,
 			);
 			path = "Home View";
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 				56EDCFA929896E6600933D4F /* NetworkService.swift in Sources */,
 				56EDCFA629896E5B00933D4F /* RepositoriesListViewModel.swift in Sources */,
 				56EDCFA729896E5D00933D4F /* RepositoriesListView.swift in Sources */,
-				56EDCFA329896E5000933D4F /* ContentView.swift in Sources */,
+				56EDCFA329896E5000933D4F /* HomeView.swift in Sources */,
 				56EDCFA829896E6400933D4F /* Date+StringFormats.swift in Sources */,
 				56EDCFAB29896F3D00933D4F /* Repository.swift in Sources */,
 			);
