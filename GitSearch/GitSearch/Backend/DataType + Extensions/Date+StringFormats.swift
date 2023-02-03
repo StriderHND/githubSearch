@@ -8,6 +8,9 @@
 import Foundation
 
 extension Date {
+    /**
+     Fuction that will give a relative time of a date using `RelativeDateTimeFormatter`
+    */
     func timeAgoDisplay() -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full

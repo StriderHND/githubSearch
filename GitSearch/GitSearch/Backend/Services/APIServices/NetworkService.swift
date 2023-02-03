@@ -36,6 +36,20 @@ protocol NetworkService {
 }
 
 extension NetworkService {
+    
+    /**
+    Generic function that returns a generic respose from a URLResquest
+     
+     - Returns:
+     An Generic`<T>` object
+     
+     - throws:
+     An error of type `APIError`
+     
+     - Parameters:
+        - type: Generic object type that needs to conform codable
+        - request; `URLRequest to perfom`
+    */
     func putRequest<T: Codable>(type: T.Type, with request: URLRequest) async throws -> T {
         let (data, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else  {

@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 extension Future where Failure == Error {
+    /**
+    Abstraction to use Future publisher wrrapper for async await operations
+    */
     convenience init(operation: @escaping() async throws -> Output) {
         self.init { promise in
             Task {
