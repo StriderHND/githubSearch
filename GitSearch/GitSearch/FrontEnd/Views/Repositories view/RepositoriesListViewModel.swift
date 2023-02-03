@@ -14,7 +14,7 @@ final class RepositoriesListViewModel: ObservableObject {
     private let client = NetworkClient()
     @Published var serachParam: String = ""
     @Published private(set) var errorMessage: String = ""
-    @Published private(set) var state = State()
+    @Published private(set) var state = QueryState()
     @Published var hasError: Bool = false
     
     private var subscriptions: Set<AnyCancellable> = []
@@ -89,7 +89,7 @@ extension RepositoriesListViewModel {
 extension RepositoriesListViewModel {
     
     private func clearState() {
-        state = State()
+        state = QueryState()
     }
     
     private func buildRequest(with query:String?, page:Int) -> URLRequest {
@@ -114,13 +114,5 @@ extension RepositoriesListViewModel {
             let response = try await self.client.putRequest(type: Repos.self, with: request)
             return response.items.compactMap{ $0 }
         }
-    }
-}
-
-extension RepositoriesListViewModel {
-    struct State {
-        var repos: [Repository] = []
-        var page: Int = 1
-        var canLoadNextPage = true
     }
 }

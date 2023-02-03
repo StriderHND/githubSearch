@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56447156298D888100E3EA42 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56447155298D888100E3EA42 /* State.swift */; };
 		56EDCFA329896E5000933D4F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AED72982CC54004DA030 /* HomeView.swift */; };
 		56EDCFA429896E5500933D4F /* GitSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AED52982CC54004DA030 /* GitSearchApp.swift */; };
 		56EDCFA529896E5800933D4F /* GitRepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690C7FE2988136B00AAA23A /* GitRepoViewCell.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		561CD90529846691000ED5E2 /* RepositoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListView.swift; sourceTree = "<group>"; };
 		561CD909298466DA000ED5E2 /* RepositoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListViewModel.swift; sourceTree = "<group>"; };
+		56447155298D888100E3EA42 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		5689AED52982CC54004DA030 /* GitSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitSearchApp.swift; sourceTree = "<group>"; };
 		5689AED72982CC54004DA030 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5689AED92982CC57004DA030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				5690C8022988158F00AAA23A /* Repository.swift */,
+				56447155298D888100E3EA42 /* State.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				56EDCFA429896E5500933D4F /* GitSearchApp.swift in Sources */,
 				56EDCFAA29896E6900933D4F /* NetworkClient.swift in Sources */,
 				56EDCFA529896E5800933D4F /* GitRepoViewCell.swift in Sources */,
+				56447156298D888100E3EA42 /* State.swift in Sources */,
 				56EDCFAE29897B1400933D4F /* Future+AsyncWrapper.swift in Sources */,
 				56EDCFA929896E6600933D4F /* NetworkService.swift in Sources */,
 				56EDCFA629896E5B00933D4F /* RepositoriesListViewModel.swift in Sources */,
