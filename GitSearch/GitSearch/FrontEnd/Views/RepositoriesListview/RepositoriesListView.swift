@@ -15,9 +15,13 @@ struct RepositoriesListView: View {
     var body: some View {
         List {
             ForEach(viewModel.state.repos, id: \.id) { repo in
-                GitRepoViewCell(repo: repo).onAppear{
-                    if viewModel.state.repos.last == repo {
-                        viewModel.fetchNextPageIfPossible()
+                NavigationLink{
+                    RepositoryView(viewModel: RepositoryViewModel(repository: repo))
+                } label: {
+                    GitRepoViewCell(repo: repo).onAppear{
+                        if viewModel.state.repos.last == repo {
+                            viewModel.fetchNextPageIfPossible()
+                        }
                     }
                 }
             }
