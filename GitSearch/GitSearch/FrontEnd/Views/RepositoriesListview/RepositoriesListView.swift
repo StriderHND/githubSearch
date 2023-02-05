@@ -19,10 +19,10 @@ struct RepositoriesListView: View {
                     RepositoryView(viewModel: RepositoryViewModel(repository: repo))
                         .navigationTitle(repo.fullName)
                 } label: {
-                    GitRepoViewCell(repo: repo).onAppear{
-                        if viewModel.state.repos.last == repo {
-                            viewModel.fetchNextPageIfPossible()
-                        }
+                    GitRepoViewCell(repo: repo)
+                }.onAppear{
+                    if viewModel.state.repos.last == repo {
+                        viewModel.fetchNextPageIfPossible()
                     }
                 }
             }

@@ -34,6 +34,11 @@ final class RepositoriesListViewModel: ObservableObject {
     init() {
         setupBidings()
     }
+    
+    enum SearchType {
+        case newSearch
+        case currentSearch
+    }
 }
 
 // MARK: Combine - handlers
@@ -62,26 +67,16 @@ extension RepositoriesListViewModel {
     - Parameters:
       - batch: an array of `Repository` objects
     */
-    private func receive(_ batch:[Repository]) {
-        state.repos += batch
+    private func receive(_ batch:[Repository], with type: SearchType) {
+        switch type {
+        case .newSearch:
+            state.repos = batch
+        case .currentSearch:
+            state.repos += batch
+        }
         state.page += 1
         state.canLoadNextPage = batch.count == pageSize
     }
-    
-    /**
-    Handles the receive of new search response batches
-     
-    When the user perform a new serach a fresh batch will update the `state` `Publisher`
-     
-    - Parameters:
-     - batch: an array of `Repository` objects
-    */
-    private func receiveNewSearch(_ batch:[Repository]) {
-        state.repos = batch
-        state.page += 1
-        state.canLoadNextPage = batch.count == pageSize
-    }
-    
     
     /**
       Tracks all the changes on the class publishers
@@ -105,7 +100,7 @@ extension RepositoriesListViewModel {
                     .sink(receiveCompletion: { completion in
                         self.receiveCompletion(completion)
                     }, receiveValue: { batch in
-                        self.receiveNewSearch(batch)
+                        self.receive(batch, with: .newSearch)
                     })
                     .store(in: &self.subscriptions)
             }
@@ -120,7 +115,7 @@ extension RepositoriesListViewModel {
      Checks base on the `State` object and its property `canLoadNextPage` if should perform a new API request for the next page of the search
      
      This function is called when the user is at the bottom of the current page to perform a new API call to show the next elements on the next page
-    */
+     */
     func fetchNextPageIfPossible() {
         guard state.canLoadNextPage else {
             return
@@ -131,7 +126,7 @@ extension RepositoriesListViewModel {
             .sink(receiveCompletion: { completion in
                 self.receiveCompletion(completion)
             }, receiveValue: { batch in
-                self.receive(batch)
+                self.receive(batch, with: .currentSearch)
             })
             .store(in: &self.subscriptions)
     }
@@ -175,6 +170,7 @@ extension RepositoriesListViewModel {
         }
         
         let urlString = "https://api.github.com/search/repositories?q=\(searchQuery)&per_page=\(pageSize)&page=\(page)"
+        print(urlString)
         let url = URL(string: urlString)!
         return URLRequest(url: url)
     }
