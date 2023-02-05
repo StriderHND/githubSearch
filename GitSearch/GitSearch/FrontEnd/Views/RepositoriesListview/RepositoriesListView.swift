@@ -24,6 +24,8 @@ struct RepositoriesListView: View {
         }
         .onChange(of: searchQuery) { newSearch in
             viewModel.serachParam = newSearch
+        }.alert(viewModel.errorMessage, isPresented: $viewModel.hasError) {
+            Button("ok", action: {})
         }
     }
 }

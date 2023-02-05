@@ -85,13 +85,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		561CD90729846696000ED5E2 /* Repositories view */ = {
+		561CD90729846696000ED5E2 /* RepositoriesListview */ = {
 			isa = PBXGroup;
 			children = (
 				561CD90529846691000ED5E2 /* RepositoriesListView.swift */,
 				561CD909298466DA000ED5E2 /* RepositoriesListViewModel.swift */,
 			);
-			path = "Repositories view";
+			path = RepositoriesListview;
 			sourceTree = "<group>";
 		};
 		561CD908298466B0000ED5E2 /* FrontEnd */ = {
@@ -172,8 +172,9 @@
 		5690C7FD2988135100AAA23A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				56EDCFAC2989742D00933D4F /* Home View */,
-				561CD90729846696000ED5E2 /* Repositories view */,
+				56A3CE4F298F784C00D07D63 /* RepositoryView */,
+				56EDCFAC2989742D00933D4F /* HomeView */,
+				561CD90729846696000ED5E2 /* RepositoriesListview */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,12 +224,19 @@
 			path = "DataType + Extensions";
 			sourceTree = "<group>";
 		};
-		56EDCFAC2989742D00933D4F /* Home View */ = {
+		56A3CE4F298F784C00D07D63 /* RepositoryView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryView;
+			sourceTree = "<group>";
+		};
+		56EDCFAC2989742D00933D4F /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				5689AED72982CC54004DA030 /* HomeView.swift */,
 			);
-			path = "Home View";
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

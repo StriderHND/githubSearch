@@ -46,7 +46,9 @@ extension RepositoriesListViewModel {
         switch completion {
         case .finished:
             break
-        case .failure:
+        case .failure(let error):
+            hasError = true
+            errorMessage = error.localizedDescription
             state.canLoadNextPage = false
         }
     }
