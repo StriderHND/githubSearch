@@ -59,9 +59,9 @@ extension RepositoriesListViewModel {
     }
     
     /**
-    Handles the receive of current search queries batches and pagination
+    Handles the receive of search queries batches and pagination
      
-    When the user perform a serach and paginates thorugh the API  batch will update the `state` `Publisher`
+    When the user perform a serachor paginates thorugh the API batch will update the `state` `Publisher`
     by appending the new repos of the next page also keeping track of the current page and if we can navigate to the nextPage
      
     - Parameters:
