@@ -6,12 +6,9 @@
 //
 
 import Foundation
-import Combine
 
 final class RepositoryViewModel: ObservableObject{
     private(set) var repository:Repository
-    
-    private var subscriptions: Set<AnyCancellable> = []
     
     init(repository: Repository) {
         self.repository = repository
