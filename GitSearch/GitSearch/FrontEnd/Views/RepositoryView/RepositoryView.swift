@@ -11,7 +11,14 @@ struct RepositoryView: View {
     @StateObject var viewModel: RepositoryViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading){
+            Text(viewModel.getLastUpdate())
+            Text(viewModel.getRepoDescription())
+                .lineLimit(3)
+                .font(.body)
+            Text(viewModel.getLanguage())
+            Text(viewModel.getStarsCount())
+        }
     }
 }
 

@@ -17,6 +17,7 @@ struct RepositoriesListView: View {
             ForEach(viewModel.state.repos, id: \.id) { repo in
                 NavigationLink{
                     RepositoryView(viewModel: RepositoryViewModel(repository: repo))
+                        .navigationTitle(repo.fullName)
                 } label: {
                     GitRepoViewCell(repo: repo).onAppear{
                         if viewModel.state.repos.last == repo {
