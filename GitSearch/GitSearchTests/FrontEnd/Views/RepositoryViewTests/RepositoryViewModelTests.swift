@@ -31,7 +31,7 @@ class RepositoryViewModelTests: XCTestCase {
     }
     
     func testGetLastUpdate() {
-        XCTAssertEqual(repositoryViewModel.getLastUpdate(), "in 5 hours")
+        XCTAssertEqual(repositoryViewModel.getLastUpdate(), "in 4 hours")
     }
     
     func testGetStarsCount() {
